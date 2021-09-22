@@ -1,0 +1,41 @@
+DELETING A BRANCH:
+  - <remote branch>
+  $ git push --delete origin <branch name>
+  
+  - <local branch>
+  $ git branch -d branch_name
+  
+MERGING A BRANCH TO MASTER:
+  - switch to master branch in the local repo
+  $ git checkout master
+  - update local master with remote master
+  $ git pull
+  - merge the branch into local master. This may give you conflicts which need to be resolved 
+    and changes committed before moving further.
+  $ git merge <branch_name>
+  $ git push
+
+REVERT PUSHED COMMITS
+  # This will create three separate revert commits:
+  $ git revert a867b4af 25eee4ca 0766c053
+
+  # It also takes ranges. This will revert the last two commits:
+  $ git revert HEAD~2..HEAD
+
+  # Similarly, you can revert a range of commits using commit hashes (non inclusive of first hash):
+  $ git revert 0d1d7fc..a867b4a
+
+GIT STASH
+https://www.atlassian.com/git/tutorials/saving-changes/git-stash
+
+RENAME A BRANCH
+  $ git checkout <old_name>
+  
+  # rename local branch
+  $ git branch -m <new_name>
+  
+  # Push the <new_name> local branch and reset the upstream branch:
+  $ git push origin -u <new_name>
+
+  # Delete the <old_name> remote branch:
+  $ git push origin --delete <old_name>
